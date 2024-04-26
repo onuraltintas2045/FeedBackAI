@@ -16,12 +16,11 @@ class ViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.textResponse = ""
         }
-        let query = ChatQuery(messages: [.init(role: .user, content: prompt)!], model: .gpt3_5Turbo)
+        let query = ChatQuery(messages: [.init(role: .user, content: prompt)!], model: .gpt4)
         openAI.chats(query: query) { result in
             switch result {
             case .success(let compResult):
                 if let content = compResult.choices.first?.message.content {
-                    print(content)
                     switch content{
                     case .string(let contentString):
                         DispatchQueue.main.async {

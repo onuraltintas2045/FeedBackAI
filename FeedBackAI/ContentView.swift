@@ -61,24 +61,23 @@ struct ContentView: View {
     func modifyText(promt: String) -> String {
         let newText: String = """
          Identify the following elements in a Feedback text:
-         - Publishability(true or false)
-         - Opinion(Positive or negative)
-         - Is the critic expressing anger? (true or false)
-         - Product purchased by reviewer
-         - Brand of the product
-         - Seller of the product
-         - Anger level
-         The review text is given in triple single quotation marks.
-         Format your response as a JSON object.
-         Use "Publishability", "Opinion", "Anger", "Product", "Brand", "Vendor", "Anger Level" as keys.
+                  - Publishability(true or false)
+                  - Opinion(Positive or negative)
+                  - Is the critic expressing anger? (true or false)
+                  - Product purchased by reviewer
+                  - Brand of the product
+                  - Seller of the product
+                  - Anger level
+          The review text is given in triple single quotation marks.
+          Format your response as a JSON object.
+          Use "Publishability", "Opinion", "Anger", "Product", "Brand", "Vendor", "Anger Level" as keys.
          If information is not available, use "unknown".
-         Keep your answer as short as possible.
-         If the Anger level is greater than (Int(angryLevel)), set Publishability to false, if the anger level is smaller than (Int(angryLevel)), set Publishability to true.
+         Keep your answer as short as possible; Your answer is written below in curly brackets; It must contain the json object.
+         If the Angry Level is less than \(Int(angryLevel)), Publishability must be True. If the Angry Level is greater than \(Int(angryLevel)), Publishability must be False.
          Format the publishability value as bool.
          Format the rage value as bool.
-         Set the anger level to 0 if it does not contain Hate Speech and Insult, otherwise evaluate it as an integer out of 100.
-         If the comment is negative but the feedback does not contain Hate Speech or Insult, set the anger value to 0.
-         
+         Calculate Anger Level from 0 to 100.
+
          Feedback text: '''\(prompt)'''
          """
         print(newText)
